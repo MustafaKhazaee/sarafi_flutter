@@ -1,4 +1,4 @@
-name: Sarafi
+name: sarafi
 description: Sarafi Mobile Application
 publish_to: 'none'
 version: 1.0.0+1
@@ -11,20 +11,11 @@ dependencies:
 
   get_it: ^7.2.0
   cupertino_icons: ^1.0.2
-
-  dio: '>=4.0.1 <5.0.0'
-  one_of: '>=1.5.0 <2.0.0'
-  one_of_serializer: '>=1.5.0 <2.0.0'
-  built_value: '>=8.4.0 <9.0.0'
-  built_collection: '>=5.1.1 <6.0.0'
   convex_bottom_bar: ^3.1.0+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^2.3.2
-  flutter_lints: ^2.0.0
-  built_value_generator: '>=8.4.0 <9.0.0'
 
 
 flutter:

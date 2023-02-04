@@ -1,11 +1,10 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:sarafi/register_dependency.dart';
 import 'features/home/widgets/material_app.dart';
 
 void main () {
-  HttpOverrides.global = MyHttpOverrides();
-  // registerDependencies();
+  setupLocator();
   runApp(const MyApp());
 }
 
@@ -14,13 +13,4 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => getMaterialApp();
-}
-
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-  }
 }
