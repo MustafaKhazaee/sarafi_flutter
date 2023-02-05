@@ -13,7 +13,7 @@ final routes = { 0: Accounts(), 1: Transactions(), 2: Dashboard(), 3: Friends(),
 ConvexAppBar getConvexAppBar (BuildContext context) => ConvexAppBar(
   items: const [
     TabItem(icon: Icons.account_balance_wallet_outlined, title: 'Accounts'),
-    TabItem(icon: Icons.transform_outlined, title: 'Transactions'),
+    TabItem(icon: Icons.transform_outlined, title: 'Transaction'),
     TabItem(icon: Icons.dashboard_outlined, title: 'Dashboard'),
     TabItem(icon: Icons.people_alt_outlined, title: 'Friends'),
     TabItem(icon: Icons.account_circle_outlined, title: 'Profile'),
@@ -22,6 +22,6 @@ ConvexAppBar getConvexAppBar (BuildContext context) => ConvexAppBar(
   backgroundColor: Theme.of(context).bottomAppBarColor,
   activeColor: Colors.white,
   color: Colors.white,
-  height: 55,
+  height: 60,
   initialActiveIndex: 2,
 );
