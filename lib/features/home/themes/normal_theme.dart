@@ -6,4 +6,5 @@ final ThemeData normalTheme = ThemeData(
   primaryColor: Colors.deepPurple,
   appBarTheme: const AppBarTheme(backgroundColor: Colors.deepPurple),
   bottomAppBarColor: Colors.deepPurple,
+  primaryColorLight: Colors.white
 );

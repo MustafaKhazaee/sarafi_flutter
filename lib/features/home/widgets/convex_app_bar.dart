@@ -20,7 +20,7 @@ ConvexAppBar getConvexAppBar (BuildContext context) => ConvexAppBar(
   ],
   onTap: (index) => context.read<HomeRouter>().changeRoute(routes[index]!),
   backgroundColor: Theme.of(context).bottomAppBarColor,
-  activeColor: Colors.white,
+  activeColor: Theme.of(context).primaryColorLight,
   color: Colors.white,
   height: 60,
   initialActiveIndex: 2,

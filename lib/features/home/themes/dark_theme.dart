@@ -6,5 +6,6 @@ final ThemeData darkTheme = ThemeData(
   primaryColor: Colors.black12,
   appBarTheme: const AppBarTheme(backgroundColor: Colors.white10),
   backgroundColor: Colors.black54,
-  bottomAppBarColor: Colors.white10
+  bottomAppBarColor: Colors.white10,
+  primaryColorLight: Colors.black54
 );
