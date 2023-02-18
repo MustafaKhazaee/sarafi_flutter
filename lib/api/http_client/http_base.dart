@@ -25,7 +25,17 @@ class HttpBase {
   final x_api_key = "742A3106-4DCF-4C57-BA43-564C8EE844AA";
   final Dio dio = Dio();
   final authService = AuthenticationService();
-  final myStatuses = { status401Unauthorized };
+  final myStatuses = {
+    status401Unauthorized,
+    status440LoginTimeout,
+    status408RequestTimeout,
+    status504GatewayTimeout,
+    status524TimeoutOccurred,
+    status522ConnectionTimedOut,
+    status419AuthenticationTimeout,
+    status598NetworkReadTimeoutError,
+    status599NetworkConnectTimeoutError
+  };
 
   HttpBase (this.resource) {
     String baseUrl = "http://10.0.2.2:5273/api/v1/";
