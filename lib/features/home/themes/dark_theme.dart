@@ -7,5 +7,5 @@ final ThemeData darkTheme = ThemeData(
   appBarTheme: const AppBarTheme(backgroundColor: Colors.white10),
   backgroundColor: Colors.black54,
   bottomAppBarColor: Colors.white10,
-  primaryColorLight: Colors.black54
+  primaryColorLight: Colors.black54,
 );

@@ -10,6 +10,10 @@ class Transactions extends StatefulWidget {
 class _TransactionsState extends State<Transactions> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text("Transaction"));
+    return Container(child: FloatingActionButton(
+      onPressed: () {
+
+      },
+    ));
   }
 }

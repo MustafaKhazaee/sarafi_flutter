@@ -1,7 +1,8 @@
 
 import 'package:provider/provider.dart';
-import 'features/home/home_router.dart';
+import 'package:sarafi/services/authentication_service.dart';
 
+final _authService = AuthenticationService();
 applicationProviders () => [
-  ChangeNotifierProvider(create: (context) => HomeRouter())
+  ListenableProvider<AuthenticationService>(create: (_) => _authService),
 ];

@@ -1,14 +1,8 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../accounts/accounts.dart';
-import '../../dashboard/dashboard.dart';
-import '../../friends/Friends.dart';
-import '../../profile/profile.dart';
-import '../../transactions/transactions.dart';
-import '../home_router.dart';
+import '../../../routes/routes.dart';
 
-final routes = { 0: Accounts(), 1: Transactions(), 2: Dashboard(), 3: Friends(), 4: Profile() };
+final _routes = [AccountsRoute, TransactionsRoute, DashboardRoute, FriendsRoute, ProfileRoute];
 
 ConvexAppBar getConvexAppBar (BuildContext context) => ConvexAppBar(
   items: const [
@@ -18,7 +12,10 @@ ConvexAppBar getConvexAppBar (BuildContext context) => ConvexAppBar(
     TabItem(icon: Icons.people_alt_outlined, title: 'Friends'),
     TabItem(icon: Icons.account_circle_outlined, title: 'Profile'),
   ],
-  onTap: (index) => context.read<HomeRouter>().changeRoute(routes[index]!),
+  onTap: (index) {
+    final route = _routes[index]!;
+    routerKey.currentState?.pushNamed(route);
+  },
   backgroundColor: Theme.of(context).bottomAppBarColor,
   activeColor: Theme.of(context).primaryColorLight,
   color: Colors.white,
