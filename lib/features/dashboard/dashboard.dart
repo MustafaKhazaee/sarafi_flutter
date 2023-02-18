@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sarafi/routes/main_routes.dart';
 import 'package:sarafi/services/authentication_service.dart';
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -20,8 +21,9 @@ class _DashboardState extends State<Dashboard> {
         padding: EdgeInsets.fromLTRB(0, 0, 0, 100),
         icon: Icon(Icons.add),
         onPressed: () {
-          final auth = AuthenticationService();
-          auth.refreshToken();
+          mainRouterKey.currentState?.popAndPushNamed(LoginRoute);
+          // final auth = AuthenticationService();
+          // auth.refreshToken();
         },
       ),
     );

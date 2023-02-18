@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 import 'package:sarafi/services/authentication_service.dart';
 
 import '../../routes/main_routes.dart';
@@ -54,18 +55,21 @@ class HttpBase {
           options.headers["x-api-key"] = x_api_key;
           final accessToken = await SecureStorage.getString("access_token");
           options.headers["Authorization"] = "Bearer $accessToken";
+
           return handler.next(options);
         },
         onResponse:(response, handler) {
           return handler.next(response);
         },
         onError: (DioError e, handler) async {
-          log('${e.message}');
           if (e.message == 'Http status error [401]') {
             final response = await authService.refreshToken();
             if (response.IsRefreshed!) {
             } else {
               mainRouterKey.currentState?.popAndPushNamed(LoginRoute);
+              e = DioError(requestOptions: RequestOptions(
+                path: '',
+              ));
             }
           }
           return handler.next(e);
@@ -76,12 +80,11 @@ class HttpBase {
     dio.interceptors.add(RetryInterceptor(
       dio: dio,
       logPrint: print,
-      retries: 4,
+      retries: 3,
       retryDelays: const [
         Duration(seconds: 3),
         Duration(seconds: 5),
         Duration(seconds: 8),
-        Duration(seconds: 13)
       ],
       retryEvaluator: DefaultRetryEvaluator(myStatuses).evaluate,
     ));

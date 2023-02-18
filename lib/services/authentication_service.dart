@@ -51,6 +51,7 @@ class AuthenticationService with ChangeNotifier {
     final request = RefreshTokenRequest(id, refreshToken);
     final response = await usersApi.refreshToken(request);
     if (response.IsRefreshed!) {
+      log("Token has been refreshed");
       await SecureStorage.putString("access_token", response.AccessToken.toString());
     }
     return response;
