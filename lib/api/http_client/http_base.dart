@@ -4,7 +4,9 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sarafi/routes/routes.dart';
 import 'package:sarafi/services/authentication_service.dart';
 
 import '../../routes/main_routes.dart';
@@ -39,14 +41,15 @@ class HttpBase {
 
   HttpBase (this.resource) {
     String baseUrl = "http://10.0.2.2:5273/api/v1/";
-
+    // adb connect 192.168.0.11:40187
     if (kDebugMode) baseUrl = "http://10.0.2.2:5273/api/v1/";
+    // if (kDebugMode) baseUrl = "http://192.168.0.101:5273/api/v1/";
     else if (kReleaseMode) baseUrl = "http://10.0.2.2:5273/api/v1/";
 
     // dio base url options and timeout:
     dio.options.baseUrl = baseUrl;
-    dio.options.connectTimeout = 5000; // 10 seconds
-    dio.options.receiveTimeout = 5000;
+    dio.options.connectTimeout = 10000; // 10 seconds
+    dio.options.receiveTimeout = 10000;
 
     // dio transformers for decoding string responses into json objects
     (dio.transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
@@ -72,11 +75,14 @@ class HttpBase {
           return handler.next(response);
         },
         onError: (DioError e, handler) async {
-          if (e.message == 'Http status error [401]') {
+          log('message is ---- ${e.message}');
+          if (e.message == 'Http status error [401]' ||
+              e.message == 'Http status error [403]') {
             final response = await authService.refreshToken();
             if (response.IsRefreshed!) {
             } else {
-              mainRouterKey.currentState?.popAndPushNamed(LoginRoute);
+              mainRouterKey.currentState?.popAndPushNamed(
+                  LoginRoute);
               e = DioError(requestOptions: RequestOptions(
                 path: '',
               ));

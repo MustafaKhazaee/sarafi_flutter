@@ -25,12 +25,14 @@ void main() async {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
   @override
-  Widget build(BuildContext context) => MaterialApp(
-    // Global Application Properties
-    themeMode: ThemeMode.system,
-    theme: normalTheme,
-    darkTheme: darkTheme,
-    debugShowCheckedModeBanner: false,
-    home: navigatorMain,
-  );
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      // Global Application Properties
+      themeMode: ThemeMode.system,
+      theme: normalTheme,
+      darkTheme: darkTheme,
+      debugShowCheckedModeBanner: false,
+      home: navigatorMain,
+    );
+  }
 }
