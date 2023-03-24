@@ -1,6 +1,6 @@
 # sarafi
 
-A new Flutter project.
+Sarafi Mobile Application using Flutter
 
 ## Getting Started
 
