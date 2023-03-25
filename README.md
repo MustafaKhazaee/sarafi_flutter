@@ -1,4 +1,4 @@
-# sarafi
+# Sarafi Mobile App
 
 Sarafi Mobile Application using Flutter
 
