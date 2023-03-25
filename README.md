@@ -2,6 +2,7 @@
 
 Sarafi Mobile Application using Flutter
 
+This is incomplete and I need help flutter devs collaborate with me.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
